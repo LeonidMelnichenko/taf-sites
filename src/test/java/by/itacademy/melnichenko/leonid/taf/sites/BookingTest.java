@@ -1,8 +1,7 @@
-package by.itacademy.melnichenko.taf.sites;
+package by.itacademy.melnichenko.leonid.taf.sites;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.edge.EdgeDriver;
-
+import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class BookingTest {

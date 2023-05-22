@@ -1,8 +1,7 @@
-package by.itacademy.melnichenko.taf.sites;
+package by.itacademy.melnichenko.leonid.taf.sites;
 
+import by.itacademy.melnichenko.leonid.taf.sites.TripadvisorPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import java.util.concurrent.TimeUnit;
