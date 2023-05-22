@@ -1,4 +1,4 @@
-package by.itacademy.melnichenko.taf.sites;
+package by.itacademy.melnichenko.leonid.taf.sites;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
