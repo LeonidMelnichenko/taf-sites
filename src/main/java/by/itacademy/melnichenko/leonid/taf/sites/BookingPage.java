@@ -17,14 +17,14 @@ public class BookingPage {
         this.driver = driver;
     }
 
-    public void buttonSignInOrRegisterClick(){
+    public void clickButtonSignInOrRegister(){
         driver.findElement(By.xpath(buttonSiteInOrRegisterXPath)).click();
     }
     public void inputEmailAddress(String email){
         driver.findElement(By.xpath(inputEmailAddressXPath)).sendKeys(email);
     }
 
-    public void buttonContinueWithEmailClick(){
+    public void clickButtonContinueWithEmail(){
         driver.findElement(By.xpath(buttonContinueWithEmailXPath)).click();
     }
 
@@ -32,7 +32,11 @@ public class BookingPage {
         driver.findElement(By.xpath(inputPasswordXPath)).sendKeys(password);
     }
 
-    public  void buttonSignInClick(){
+    public  void clickButtonSignIn(){
         driver.findElement(By.xpath(buttonSignInXPath)).click();
     }
+
+
+
+
 }

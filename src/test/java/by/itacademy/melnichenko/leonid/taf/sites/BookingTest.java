@@ -1,70 +1,46 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
-import org.openqa.selenium.edge.EdgeDriver;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class BookingTest {
+    ChromeDriver chromeDriver = new ChromeDriver();
+    BookingPage bookingPage = new BookingPage(chromeDriver);
+    @Before
+    public void beforeTest(){
+        chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        chromeDriver.get("https://www.booking.com/");
+        bookingPage.clickButtonSignInOrRegister();
+    }
     @Test
-    public void TestEnterWithEmptyEmail(){
-        EdgeDriver edgeDriver = new EdgeDriver();
-        edgeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        edgeDriver.get("https://www.booking.com/");
-        BookingPage bookingPage = new BookingPage(edgeDriver);
-
-        bookingPage.buttonSignInOrRegisterClick();
+    public void testEnterWithEmptyEmail(){
         bookingPage.inputEmailAddress("");
-        bookingPage.buttonContinueWithEmailClick();
+        bookingPage.clickButtonContinueWithEmail();
     }
     @Test
-    public void TestEnterWithUncorrectEmail(){
-        EdgeDriver edgeDriver = new EdgeDriver();
-        edgeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        edgeDriver.get("https://www.booking.com/");
-        BookingPage bookingPage = new BookingPage(edgeDriver);
-
-        bookingPage.buttonSignInOrRegisterClick();
+    public void testEnterWithUncorrectEmail(){
         bookingPage.inputEmailAddress("email");
-        bookingPage.buttonContinueWithEmailClick();
+        bookingPage.clickButtonContinueWithEmail();
     }
-
     @Test
-    public void TestEnterWithCorrectEmail(){
-        EdgeDriver edgeDriver = new EdgeDriver();
-        edgeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        edgeDriver.get("https://www.booking.com/");
-        BookingPage bookingPage = new BookingPage(edgeDriver);
-
-        bookingPage.buttonSignInOrRegisterClick();
-        bookingPage.inputEmailAddress("test@mail");
-        bookingPage.buttonContinueWithEmailClick();
+    public void testEnterWithCorrectEmail(){
+        bookingPage.inputEmailAddress(Util.generateEmail());
+        bookingPage.clickButtonContinueWithEmail();
     }
-
     @Test
-    public void TestEnterWithCorrectEmailAndEmptyPassword(){
-        EdgeDriver edgeDriver = new EdgeDriver();
-        edgeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        edgeDriver.get("https://www.booking.com/");
-        BookingPage bookingPage = new BookingPage(edgeDriver);
-
-        bookingPage.buttonSignInOrRegisterClick();
-        bookingPage.inputEmailAddress("test@mail");
-        bookingPage.buttonContinueWithEmailClick();
+    public void testEnterWithCorrectEmailAndEmptyPassword(){
+        bookingPage.inputEmailAddress(Util.generateEmail());
+        bookingPage.clickButtonContinueWithEmail();
         bookingPage.inputPassword("");
-        bookingPage.buttonSignInClick();
+        bookingPage.clickButtonSignIn();
     }
-
     @Test
-    public void TestEnterWithCorrectEmailAndAnyPassword(){
-        EdgeDriver edgeDriver = new EdgeDriver();
-        edgeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        edgeDriver.get("https://www.booking.com/");
-        BookingPage bookingPage = new BookingPage(edgeDriver);
-
-        bookingPage.buttonSignInOrRegisterClick();
-        bookingPage.inputEmailAddress("test@mail");
-        bookingPage.buttonContinueWithEmailClick();
-        bookingPage.inputPassword("1213454dfgdsg24242");
-        bookingPage.buttonSignInClick();
+    public void testEnterWithCorrectEmailAndAnyPassword(){
+        bookingPage.inputEmailAddress(Util.generateEmail());
+        bookingPage.clickButtonContinueWithEmail();
+        bookingPage.inputPassword(Util.generatePassword());
+        bookingPage.clickButtonSignIn();
     }
 }
