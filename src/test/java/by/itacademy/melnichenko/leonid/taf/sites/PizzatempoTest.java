@@ -6,10 +6,15 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PizzatempoTest {
-    ChromeDriver chromeDriver = new ChromeDriver();
-    PizzatempoPage pizzatempoPage = new PizzatempoPage(chromeDriver);
+    ChromeDriver chromeDriver;
+    PizzatempoPage pizzatempoPage;
+
+    PizzaTempoStep pizzaTempoStep;
     @Before
     public void beforeTest(){
+        chromeDriver = new ChromeDriver();
+        pizzatempoPage = new PizzatempoPage(chromeDriver);
+        pizzaTempoStep = new PizzaTempoStep(chromeDriver);
         chromeDriver.get("https://www.pizzatempo.by/");
     }
     @After
@@ -18,8 +23,7 @@ public class PizzatempoTest {
     }
     @Test
     public void testEnterWithEmptyEmailAndPassword(){
-        pizzatempoPage.setInputEmail("");
-        pizzatempoPage.setInputPassword("");
+        pizzaTempoStep.fillLoginFormAndSubmit("", "");
     }
     @Test
     public void testEnterWithUncorrectEmail(){
