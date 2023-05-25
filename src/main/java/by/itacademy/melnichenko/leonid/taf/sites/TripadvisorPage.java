@@ -2,7 +2,6 @@ package by.itacademy.melnichenko.leonid.taf.sites;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class TripadvisorPage {
     WebDriver driver;
@@ -15,13 +14,13 @@ public class TripadvisorPage {
     public TripadvisorPage(WebDriver driver) {
         this.driver=driver;
     }
-    public void signInButtonClick() {
+    public void clickSignInButton() {
         driver.findElement(By.xpath(buttonSignInXPath)).click();
     }
     public void switchToIframe() {
         driver.switchTo().frame(driver.findElement(By.xpath(loginRegistraitionIframe)));
     }
-    public void buttonContinueWithEmailClick(){
+    public void clickButtonContinueWithEmail(){
         driver.findElement(By.xpath(buttonContinueWithEmailXpath)).click();
     }
     public void inputEmailAddressTo(String email){

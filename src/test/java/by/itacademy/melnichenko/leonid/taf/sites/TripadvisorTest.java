@@ -1,66 +1,42 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
-import by.itacademy.melnichenko.leonid.taf.sites.TripadvisorPage;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.edge.EdgeDriver;
-
+import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class TripadvisorTest {
-    @Test
-    public void EnterWithEmptyEmailAndPassword(){
-        EdgeDriver driver = new EdgeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.tripadvisor.com/");
-
-        TripadvisorPage tripadvisorPage = new TripadvisorPage(driver);
-        tripadvisorPage.signInButtonClick();
+    ChromeDriver chromeDriver = new ChromeDriver();
+    TripadvisorPage tripadvisorPage = new TripadvisorPage(chromeDriver);
+    @Before
+    public void beforetest(){
+        chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        chromeDriver.get("https://www.tripadvisor.com/");
+        tripadvisorPage.clickSignInButton();
         tripadvisorPage.switchToIframe();
-        tripadvisorPage.buttonContinueWithEmailClick();
-        tripadvisorPage.inputEmailAddressTo("");
-        tripadvisorPage.inputPasswordTo("");
+        tripadvisorPage.clickButtonContinueWithEmail();
+    }
+    @After
+    public void afterTest(){
         tripadvisorPage.buttonSignInApplyTo();
     }
     @Test
-    public void EnterWithIncorrectEmail(){
-        EdgeDriver driver = new EdgeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.tripadvisor.com/");
-
-        TripadvisorPage tripadvisorPage = new TripadvisorPage(driver);
-        tripadvisorPage.signInButtonClick();
-        tripadvisorPage.switchToIframe();
-        tripadvisorPage.buttonContinueWithEmailClick();
+    public void EnterWithEmptyEmailAndPassword(){
+        tripadvisorPage.inputEmailAddressTo("");
+        tripadvisorPage.inputPasswordTo("");
+    }
+    @Test
+    public void EnterWithUncorrectEmail(){
         tripadvisorPage.inputEmailAddressTo("email");
-        tripadvisorPage.inputPasswordTo(""); // непонятно должен ли passwod быть пустым в этом тесте
-        tripadvisorPage.buttonSignInApplyTo();
     }
     @Test
     public void EnterWithCorrectEmail(){
-        EdgeDriver driver = new EdgeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.tripadvisor.com/");
-
-        TripadvisorPage tripadvisorPage = new TripadvisorPage(driver);
-        tripadvisorPage.signInButtonClick();
-        tripadvisorPage.switchToIframe();
-        tripadvisorPage.buttonContinueWithEmailClick();
-        tripadvisorPage.inputEmailAddressTo("test@email");
-        tripadvisorPage.inputPasswordTo("");
-        tripadvisorPage.buttonSignInApplyTo();
+        tripadvisorPage.inputEmailAddressTo(Util.generateEmail());
     }
     @Test
     public void EnterWithCorrectEmailAndAnyPassword(){
-        EdgeDriver driver = new EdgeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.tripadvisor.com/");
-
-        TripadvisorPage tripadvisorPage = new TripadvisorPage(driver);
-        tripadvisorPage.signInButtonClick();
-        tripadvisorPage.switchToIframe();
-        tripadvisorPage.buttonContinueWithEmailClick();
-        tripadvisorPage.inputEmailAddressTo("test@mail");
-        tripadvisorPage.inputPasswordTo("123446gghghf646");
-        tripadvisorPage.buttonSignInApplyTo();
+        tripadvisorPage.inputEmailAddressTo(Util.generateEmail());
+        tripadvisorPage.inputPasswordTo(Util.generatePassword());
     }
 }
