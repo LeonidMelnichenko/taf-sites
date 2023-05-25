@@ -18,7 +18,7 @@ public class PizzatempoPage {
     public void setInputPassword(String password){
         webDriver.findElement(By.xpath(inputPasswordXPath)).sendKeys(password);
     }
-    public void setButtonFindSudmitClick(){
+    public void clickSetButtonFindSubmit(){
         webDriver.findElement(By.xpath(buttonFindSudmit)).click();
     }
 }
