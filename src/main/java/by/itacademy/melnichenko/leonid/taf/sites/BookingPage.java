@@ -16,27 +16,13 @@ public class BookingPage {
     public BookingPage(WebDriver driver){
         this.driver = driver;
     }
-
-    public void clickButtonSignInOrRegister(){
-        driver.findElement(By.xpath(buttonSiteInOrRegisterXPath)).click();
+    public void clickButtonSignInOrRegister(){driver.findElement(By.xpath(buttonSiteInOrRegisterXPath)).click();
     }
-    public void inputEmailAddress(String email){
-        driver.findElement(By.xpath(inputEmailAddressXPath)).sendKeys(email);
+    public void inputEmailAddress(String email){driver.findElement(By.xpath(inputEmailAddressXPath)).sendKeys(email);}
+    public void clickButtonContinueWithEmail(){driver.findElement(By.xpath(buttonContinueWithEmailXPath)).click();
     }
-
-    public void clickButtonContinueWithEmail(){
-        driver.findElement(By.xpath(buttonContinueWithEmailXPath)).click();
+    public void inputPassword(String password){driver.findElement(By.xpath(inputPasswordXPath)).sendKeys(password);
     }
-
-    public void inputPassword(String password){
-        driver.findElement(By.xpath(inputPasswordXPath)).sendKeys(password);
+    public  void clickButtonSignIn(){driver.findElement(By.xpath(buttonSignInXPath)).click();
     }
-
-    public  void clickButtonSignIn(){
-        driver.findElement(By.xpath(buttonSignInXPath)).click();
-    }
-
-
-
-
 }
