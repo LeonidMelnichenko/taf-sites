@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class BookingPage {
-    WebDriver driver;
-    String buttonSiteInOrRegisterXPath = "//*[@id='b2indexPage']/div[16]/div/div/div/div[2]/div/a";
-    String inputEmailAddressXPath = "//*[@id='username']";
-    String buttonContinueWithEmailXPath = "//*[@id='root']/div/div/div/div[2]/div[1]" +
+    private WebDriver driver;
+    private String buttonSiteInOrRegisterXPath = "//*[@id='b2indexPage']/div[16]/div/div/div/div[2]/div/a";
+    private String inputEmailAddressXPath = "//*[@id='username']";
+    private String buttonContinueWithEmailXPath = "//*[@id='root']/div/div/div/div[2]/div[1]" +
             "/div/div/div/div/div/div/form/div[3]/button";
-    String inputPasswordXPath = "//*[@id='password']";
-    String buttonSignInXPath = "//*[@id='root']/div/div/div/div[2]/div[1]/div/div/div" +
+    private String inputPasswordXPath = "//*[@id='password']";
+    private String buttonSignInXPath = "//*[@id='root']/div/div/div/div[2]/div[1]/div/div/div" +
             "/div/div/div/form/div[2]/button";
 
     public BookingPage(WebDriver driver){

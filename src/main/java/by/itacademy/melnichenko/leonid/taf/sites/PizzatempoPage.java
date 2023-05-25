@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PizzatempoPage {
-    WebDriver webDriver;
-    String inputEmailXPath = "/html/body/div/div[1]/form/p[1]/input";
-    String inputPasswordXPath = "/html/body/div/div[1]/form/p[2]/input[1]";
-    String buttonFindSudmit = "/html/body/div/div[1]/form/p[2]/input[2]";
+    private WebDriver webDriver;
+    private String inputEmailXPath = "/html/body/div/div[1]/form/p[1]/input";
+    private String inputPasswordXPath = "/html/body/div/div[1]/form/p[2]/input[1]";
+    private String buttonFindSudmit = "/html/body/div/div[1]/form/p[2]/input[2]";
 
     public PizzatempoPage(WebDriver webDriver) {
         this.webDriver = webDriver;
