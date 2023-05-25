@@ -14,7 +14,7 @@ public class DominosPage {
         this.webDriver = webDriver;
     }
 
-    public void buttonEnterClick(){
+    public void clickButtonEnter(){
         webDriver.findElement(By.xpath(buttonEnterXPath)).click();
     }
     public void inputEmail(String email){
@@ -23,7 +23,7 @@ public class DominosPage {
     public void inputPassword(String password){
         webDriver.findElement(By.xpath(inputPasswordXPath)).sendKeys(password);
     }
-    public void buttonEnterToAccountClick(){
+    public void clickButtonEnterToAccount(){
         webDriver.findElement(By.xpath(buttonToAccountXPath)).click();
     }
 }

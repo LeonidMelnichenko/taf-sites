@@ -1,30 +1,27 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
-import by.itacademy.melnichenko.leonid.taf.sites.DominosPage;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DominosTest {
-    @Test
-    public void TestEnterWithUncorrectEmailAndAnyPassword(){
-        ChromeDriver chromeDriver = new ChromeDriver();
+    ChromeDriver chromeDriver = new ChromeDriver();
+    DominosPage dominosPage = new DominosPage(chromeDriver);
+    @Before
+    public void beforeTest(){
         chromeDriver.get("https://dominos.by/");
-        DominosPage dominosPage = new DominosPage(chromeDriver);
-
-        dominosPage.buttonEnterClick();
-        dominosPage.inputEmail("email");
-        dominosPage.inputPassword("123456");
-        dominosPage.buttonEnterToAccountClick();
+        dominosPage.clickButtonEnter();
     }
-
-    public void TestEnterWithCorrectEmailAndAnyPassword(){
-        ChromeDriver chromeDriver = new ChromeDriver();
-        chromeDriver.get("https://dominos.by/");
-        DominosPage dominosPage = new DominosPage(chromeDriver);
-
-        dominosPage.buttonEnterClick();
-        dominosPage.inputEmail("test@mail.com");
-        dominosPage.inputPassword("123456");
-        dominosPage.buttonEnterToAccountClick();
+    @Test
+    public void testEnterWithUncorrectEmailAndAnyPassword(){
+        dominosPage.inputEmail("email");
+        dominosPage.inputPassword(Util.generatePassword());
+        dominosPage.clickButtonEnterToAccount();
+    }
+    @Test
+    public void testEnterWithCorrectEmailAndAnyPassword(){
+        dominosPage.inputEmail(Util.generateEmail());
+        dominosPage.inputPassword(Util.generatePassword());
+        dominosPage.clickButtonEnterToAccount();
     }
 }
