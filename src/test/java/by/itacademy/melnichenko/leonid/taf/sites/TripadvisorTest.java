@@ -1,7 +1,7 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class TripadvisorTest {
     ChromeDriver chromeDriver = new ChromeDriver();
     TripadvisorPage tripadvisorPage = new TripadvisorPage(chromeDriver);
-    @Before
+    @BeforeEach
     public void beforetest(){
         chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         chromeDriver.get("https://www.tripadvisor.com/");
@@ -17,7 +17,7 @@ public class TripadvisorTest {
         tripadvisorPage.switchToIframe();
         tripadvisorPage.clickButtonContinueWithEmail();
     }
-    @After
+    @AfterEach
     public void afterTest(){
         tripadvisorPage.buttonSignInApplyTo();
     }

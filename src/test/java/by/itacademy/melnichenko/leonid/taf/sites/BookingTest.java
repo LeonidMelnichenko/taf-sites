@@ -1,14 +1,15 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class BookingTest {
     ChromeDriver chromeDriver = new ChromeDriver();
     BookingPage bookingPage = new BookingPage(chromeDriver);
-    @Before
+    @BeforeEach
     public void beforeTest(){
         chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         chromeDriver.get("https://www.booking.com/");
