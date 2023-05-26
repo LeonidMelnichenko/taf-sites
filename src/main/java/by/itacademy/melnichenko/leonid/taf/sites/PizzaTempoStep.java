@@ -12,4 +12,9 @@ public class PizzaTempoStep {
         page.setInputPassword(password);
         page.clickSetButtonFindSubmit();
     }
+    public  void fillLoginFormAndSubmit(String name){
+        page.setInputEmail(name);
+        page.clickSetButtonFindSubmit();
+    }
+
 }
