@@ -1,5 +1,6 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,36 +8,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class TripadvisorTest {
-    ChromeDriver chromeDriver = new ChromeDriver();
-    TripadvisorPage tripadvisorPage = new TripadvisorPage(chromeDriver);
+    ChromeDriver chromeDriver;
+    TripadvisorPage tripadvisorPage;
+    TripadvisorStep tripadvisorStep;
+    DemoFaker demoFaker;
     @BeforeEach
     public void beforetest(){
-        chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        chromeDriver.get("https://www.tripadvisor.com/");
-        tripadvisorPage.clickSignInButton();
-        tripadvisorPage.switchToIframe();
-        tripadvisorPage.clickButtonContinueWithEmail();
+        chromeDriver = new ChromeDriver();
+        tripadvisorPage = new TripadvisorPage(chromeDriver);
+        tripadvisorStep = new TripadvisorStep(chromeDriver);
+        demoFaker = new DemoFaker(new Faker());
+        tripadvisorPage.getUrl();
     }
     @AfterEach
     public void afterTest(){
-        tripadvisorPage.buttonSignInApplyTo();
+        chromeDriver.quit();
     }
     @Test
     public void EnterWithEmptyEmailAndPassword(){
-        tripadvisorPage.inputEmailAddressTo("");
-        tripadvisorPage.inputPasswordTo("");
+        tripadvisorStep.fillLoginFormAndSubmit("", "");
     }
     @Test
     public void EnterWithUncorrectEmail(){
-        tripadvisorPage.inputEmailAddressTo("email");
+        tripadvisorStep.fillLoginFormAndSubmit("email");
     }
     @Test
     public void EnterWithCorrectEmail(){
-        tripadvisorPage.inputEmailAddressTo(Util.generateEmail());
+        tripadvisorStep.fillLoginFormAndSubmit(demoFaker.generateFakerEmail());
     }
     @Test
     public void EnterWithCorrectEmailAndAnyPassword(){
-        tripadvisorPage.inputEmailAddressTo(Util.generateEmail());
-        tripadvisorPage.inputPasswordTo(Util.generatePassword());
+       tripadvisorStep.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.generateFakerPassword());
     }
 }

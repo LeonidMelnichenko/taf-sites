@@ -32,4 +32,8 @@ public class TripadvisorPage {
     public void buttonSignInApplyTo(){
         driver.findElement(By.xpath(buttonSignInApplyXpath)).click();
     }
+
+    public void getUrl(){
+        driver.get("https://www.tripadvisor.com/");
+    }
 }
