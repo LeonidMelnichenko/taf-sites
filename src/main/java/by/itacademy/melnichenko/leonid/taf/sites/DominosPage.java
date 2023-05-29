@@ -3,12 +3,14 @@ package by.itacademy.melnichenko.leonid.taf.sites;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class DominosPage {
     private WebDriver webDriver;
     private String buttonEnterXPath = "//*[@id='app-root']/div/div[1]/div[1]/div/div[4]/div/div/div[3]/button";
     private String inputEmailXPath = "/html/body/div[3]/div[2]/div/div/div/div[2]/div[2]/div/form/div/div[1]/input";
     private String inputPasswordXPath = "/html/body/div[3]/div[2]/div/div/div/div[2]/div[2]/div/form/div/div[2]/input";
-    private String buttonToAccountXPath = "/html/body/div[3]/div[2]/div/div/div/div[2]/div[2]/div/form/div/button";
+    private String buttonToAccountXpath = "/html/body/div[3]/div[2]/div/div/div/div[2]/div[2]/div/form/div/button";
 
     public DominosPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -24,6 +26,9 @@ public class DominosPage {
         webDriver.findElement(By.xpath(inputPasswordXPath)).sendKeys(password);
     }
     public void clickButtonEnterToAccount(){
-        webDriver.findElement(By.xpath(buttonToAccountXPath)).click();
+        webDriver.findElement(By.xpath(buttonToAccountXpath)).click();
+    }
+    public void getUrl(){
+        webDriver.get("https://dominos.by/");
     }
 }

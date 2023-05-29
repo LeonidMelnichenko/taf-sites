@@ -1,31 +1,35 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
-
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DominosTest {
-    ChromeDriver chromeDriver = new ChromeDriver();
-    DominosPage dominosPage = new DominosPage(chromeDriver);
+    ChromeDriver chromeDriver;
+    DominosPage dominosPage;
+    DominosStep dominosStep;
+    DemoFaker demoFaker;
+
     @BeforeEach
     public void beforeTest(){
-        chromeDriver.get("https://dominos.by/");
-        dominosPage.clickButtonEnter();
+        chromeDriver = new ChromeDriver();
+        dominosPage = new DominosPage(chromeDriver);
+        dominosStep = new DominosStep(chromeDriver);
+        demoFaker = new DemoFaker(new Faker());
+        dominosPage.getUrl();
     }
     @AfterEach
     public void afterTest(){
-        dominosPage.clickButtonEnterToAccount();
+        chromeDriver.quit();
     }
     @Test
     public void testEnterWithUncorrectEmailAndAnyPassword(){
-        dominosPage.inputEmail("email");
-        dominosPage.inputPassword(Util.generatePassword());
+        dominosStep.fillLoginFormAndEnterToAccount("email", demoFaker.generateFakerPassword());
     }
     @Test
     public void testEnterWithCorrectEmailAndAnyPassword(){
-        dominosPage.inputEmail(Util.generateEmail());
-        dominosPage.inputPassword(Util.generatePassword());
+        dominosStep.fillLoginFormAndEnterToAccount(demoFaker.generateFakerEmail(), demoFaker.generateFakerEmail());
     }
 }
