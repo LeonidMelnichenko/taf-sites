@@ -8,7 +8,7 @@ public class PizzatempoPage {
     private String inputEmailName = "astroauth_login";
     private String inputPasswordName = "astroauth_pass";
     private String buttonFindSudmitName = "astroauth_submit";
-    private String resultTextAfterIncorrectEnter = "//*[@id='alert']/div[2]/div[2]";
+    private String resultTextAfterIncorrectEnter = "//*[@id='alert']/div[2]";
 
     private String url = "https://www.pizzatempo.by/";
 
@@ -29,7 +29,7 @@ public class PizzatempoPage {
     }
 
     public String getResultTextAfterIncorrectEnter(){
-        WebElement expectedResult = webDriver.findElement(By.name(resultTextAfterIncorrectEnter));
+        WebElement expectedResult = webDriver.findElement(By.xpath(resultTextAfterIncorrectEnter));
         return expectedResult.getText();
     }
 }
