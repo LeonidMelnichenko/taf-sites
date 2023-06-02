@@ -1,5 +1,8 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
+import by.itacademy.melnichenko.leonid.taf.sites.page.DominosPage;
+import by.itacademy.melnichenko.leonid.taf.sites.step.DominosStep;
+import by.itacademy.melnichenko.leonid.taf.sites.utils.DemoFaker;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +21,7 @@ public class DominosTest {
         dominosPage = new DominosPage(chromeDriver);
         dominosStep = new DominosStep(chromeDriver);
         demoFaker = new DemoFaker(new Faker());
+        chromeDriver.manage().window().maximize();
         dominosPage.getUrl();
     }
     @AfterEach

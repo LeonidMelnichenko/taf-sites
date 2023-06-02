@@ -1,4 +1,4 @@
-package by.itacademy.melnichenko.leonid.taf.sites;
+package by.itacademy.melnichenko.leonid.taf.sites.utils;
 
 public class Util {
     public static String generateEmail(){

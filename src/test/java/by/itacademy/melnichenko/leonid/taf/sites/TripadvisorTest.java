@@ -1,11 +1,13 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
 
+import by.itacademy.melnichenko.leonid.taf.sites.page.TripadvisorPage;
+import by.itacademy.melnichenko.leonid.taf.sites.step.TripadvisorStep;
+import by.itacademy.melnichenko.leonid.taf.sites.utils.DemoFaker;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.util.concurrent.TimeUnit;
 
 public class TripadvisorTest {
     ChromeDriver chromeDriver;

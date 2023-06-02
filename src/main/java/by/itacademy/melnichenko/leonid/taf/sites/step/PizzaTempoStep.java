@@ -1,7 +1,6 @@
-package by.itacademy.melnichenko.leonid.taf.sites;
-
+package by.itacademy.melnichenko.leonid.taf.sites.step;
+import by.itacademy.melnichenko.leonid.taf.sites.page.PizzatempoPage;
 import org.openqa.selenium.WebDriver;
-
 public class PizzaTempoStep {
     PizzatempoPage page;
     public PizzaTempoStep(WebDriver webDriver) {
@@ -16,5 +15,4 @@ public class PizzaTempoStep {
         page.setInputEmail(name);
         page.clickSetButtonFindSubmit();
     }
-
 }

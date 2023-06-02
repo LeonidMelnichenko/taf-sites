@@ -1,7 +1,10 @@
 package by.itacademy.melnichenko.leonid.taf.sites;
-
+import by.itacademy.melnichenko.leonid.taf.sites.page.PizzatempoPage;
+import by.itacademy.melnichenko.leonid.taf.sites.step.PizzaTempoStep;
+import by.itacademy.melnichenko.leonid.taf.sites.utils.DemoFaker;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +14,6 @@ public class PizzatempoTest {
     PizzatempoPage pizzatempoPage;
     PizzaTempoStep pizzatempoStep;
     DemoFaker demoFaker;
-
     @BeforeEach
     public void beforeTest(){
         chromeDriver = new ChromeDriver();
@@ -35,6 +37,7 @@ public class PizzatempoTest {
     @Test
     public void testEnterWithEmptyEmailAndAnyPassword(){
       pizzatempoStep.fillLoginFormAndSubmit("", demoFaker.generateFakerPassword() );
+
     }
     @Test
     public void TestEnterWithCorrectEmailAndEmptyPassword(){
@@ -42,7 +45,8 @@ public class PizzatempoTest {
     }
     @Test
     public void testEnterWithCorrectEmailAndAnyPassword(){
-        pizzatempoStep.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(),
-                demoFaker.generateFakerPassword());
+        pizzatempoStep.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.generateFakerPassword());
+        String actualResult = pizzatempoPage.getResultTextAfterIncorrectEnter();
+        Assertions.assertEquals("Неверно указано имя пользователя или пароль.", actualResult);
     }
 }

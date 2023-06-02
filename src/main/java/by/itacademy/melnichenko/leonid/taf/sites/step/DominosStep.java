@@ -1,5 +1,6 @@
-package by.itacademy.melnichenko.leonid.taf.sites;
+package by.itacademy.melnichenko.leonid.taf.sites.step;
 
+import by.itacademy.melnichenko.leonid.taf.sites.page.DominosPage;
 import org.openqa.selenium.WebDriver;
 
 public class DominosStep {

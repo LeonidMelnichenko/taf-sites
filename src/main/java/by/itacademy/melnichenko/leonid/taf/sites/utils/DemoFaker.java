@@ -1,8 +1,7 @@
-package by.itacademy.melnichenko.leonid.taf.sites;
+package by.itacademy.melnichenko.leonid.taf.sites.utils;
 import com.github.javafaker.Faker;
 public class DemoFaker {
     private Faker faker;
-
     public DemoFaker(Faker faker) {
         this.faker = faker;
     }
