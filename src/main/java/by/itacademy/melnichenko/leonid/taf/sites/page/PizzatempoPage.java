@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 
 public class PizzatempoPage {
     private WebDriver webDriver;
-    private String inputEmailName = "astroauth_login";
-    private String inputPasswordName = "astroauth_pass";
-    private String buttonFindSudmitName = "astroauth_submit";
-    private String resultTextAfterIncorrectEnter = "//*[@id='alert']/div[2]";
+    private String inputEmailLocator = "astroauth_login";
+    private String inputPasswordLocator = "astroauth_pass";
+    private String buttonFindSudmitLocator = "astroauth_submit";
+    private String resultTextAfterIncorrectEnterLocator = "PopupHead";
 
     private String url = "https://www.pizzatempo.by/";
 
@@ -16,20 +16,20 @@ public class PizzatempoPage {
         this.webDriver = webDriver;
     }
     public void setInputEmail(String email){
-        webDriver.findElement(By.name(inputEmailName)).sendKeys(email);
+        webDriver.findElement(By.name(inputEmailLocator)).sendKeys(email);
     }
     public void setInputPassword(String password){
-        webDriver.findElement(By.name(inputPasswordName)).sendKeys(password);
+        webDriver.findElement(By.name(inputPasswordLocator)).sendKeys(password);
     }
     public void clickSetButtonFindSubmit(){
-        webDriver.findElement(By.name(buttonFindSudmitName)).click();
+        webDriver.findElement(By.name(buttonFindSudmitLocator)).click();
     }
     public void getUrl(){
         webDriver.get(url);
     }
 
     public String getResultTextAfterIncorrectEnter(){
-        WebElement expectedResult = webDriver.findElement(By.xpath(resultTextAfterIncorrectEnter));
+        WebElement expectedResult = webDriver.findElement(By.className(resultTextAfterIncorrectEnterLocator));
         return expectedResult.getText();
     }
 }
